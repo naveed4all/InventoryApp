@@ -1,9 +1,9 @@
-﻿namespace InventoryApp.Models
+﻿namespace Shared.Models
 {
     public class BaseModel
     {
         public DateTime CreateAt { get; set; } = DateTime.UtcNow;
-                
+
         public DateTime? ModifiedDate { get; set; }
 
         public bool IsActive { get; set; } = true;

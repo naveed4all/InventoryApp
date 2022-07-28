@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace InventoryApp.Models
+namespace Shared.Models
 {
-    public class Vendor: BaseModelCustom
+    public class Vendor : BaseModelCustom
     {
         [Key]
         public int VendorId { get; set; }

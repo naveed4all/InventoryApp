@@ -1,4 +1,4 @@
-﻿namespace InventoryApp.Models
+﻿namespace Shared.Models
 {
     public class SystemUser
     {

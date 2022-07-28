@@ -1,26 +1,53 @@
-﻿using InventoryApp.Database;
-using InventoryApp.Models;
-using Shared.ModelDTO;
-
+﻿using Shared.Services;
+using Shared.Database;
+using Shared.Models;
+using Shared.ModelDTO.Vendor;
 
 namespace InvConsoleApp
 {
     public class Program
-    {
-        public Program(INV_DBContext context)
-        {
-             // this._dbcontext = context;
-        }
+    {       
 
         static void Main(string[] args)
         {
+
             Console.WriteLine("Add Vendor");
             Console.WriteLine("----------");
-                        
 
-          //  InsertVendor();
+            VendorService _VendorService = new VendorService();
+            var obj = new Vendor()
+            {
+                VendorName = "Naveed",
+                VendorAddress = "Abc Street",
+                VendorContact = "032323332",
+                OtherDetails = "",
+                Email = "naveed@gmail.com",
+                IsActive = true,
+                CreateAt = DateTime.UtcNow,
+            };
+
+            _VendorService.Adds(obj);
+
         }
-       
+
+        public void Add(AddVendor addVendor)
+        {
+
+            VendorService _VendorService = new VendorService();
+            var obj = new Vendor()
+            {
+                VendorName = addVendor.VendorName,
+                VendorAddress = addVendor.VendorAddress,
+                VendorContact = addVendor.VendorContact,
+                Email = addVendor.Email,
+                OtherDetails = addVendor.OtherDetails,
+                IsActive = true,
+                CreateAt = DateTime.Now,
+            };
+
+            _VendorService.Add(obj);
+        }
+
 
         //public void InsertVendor()
         //{

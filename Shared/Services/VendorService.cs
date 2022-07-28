@@ -3,20 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using InventoryApp.Database;
-using InventoryApp.Models;
 using Shared.ModelDTO;
 using Shared.IServices;
 using Microsoft.EntityFrameworkCore;
+using Shared.Database;
+using Shared.Models;
 
-namespace InvConsoleApp
+namespace Shared.Services
 {
     public class VendorService : IServices<Vendor>
     {
 
-        private INV_DBContext _dbcontext;
-        
-        public VendorService(INV_DBContext dbcontext)
+        private NV_DBContext _dbcontext;
+
+        public VendorService()
+        {
+           
+        }
+        public VendorService(NV_DBContext dbcontext)
         {
             _dbcontext = dbcontext;
         }
@@ -25,7 +29,13 @@ namespace InvConsoleApp
         {
             var result = await _dbcontext.Vendors.AddAsync(vendor);
             await _dbcontext.SaveChangesAsync();
-            return result.Entity;
+            return vendor;
+        }
+
+        public void Adds(Vendor vendor)
+        {
+            var result = _dbcontext.Vendors.Add(vendor);
+            _dbcontext.SaveChanges();            
         }
 
         public void Delete(int Id)
@@ -42,6 +52,35 @@ namespace InvConsoleApp
         {
             throw new NotImplementedException();
         }
+
+        public Task<Vendor> GetById(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<Vendor> Update(Vendor vendor)
+        {
+            var result = await _dbcontext.Vendors.FirstOrDefaultAsync(e => e.VendorId == vendor.VendorId);
+
+            if (result != null)
+            {
+                result.VendorName = vendor.VendorName;
+                result.VendorAddress = vendor.VendorAddress;
+                result.Email = vendor.Email;
+                result.VendorContact = vendor.VendorContact;
+                result.OtherDetails = vendor.OtherDetails;
+                result.ModifiedBy = vendor.ModifiedBy;
+                result.ModifiedDate = vendor.ModifiedDate;
+
+                await _dbcontext.SaveChangesAsync();
+
+                return result;
+            }
+
+            return null;
+        }
+
+
 
         //public void InsertVendor()
         //{
@@ -73,26 +112,5 @@ namespace InvConsoleApp
 
         //}
 
-        public async Task<Vendor> Update(Vendor vendor)
-        {
-            var result = await _dbcontext.Vendors.FirstOrDefaultAsync(e => e.VendorId == vendor.VendorId);
-
-            if (result != null)
-            {
-                result.VendorName =  vendor.VendorName;
-                result.VendorAddress = vendor.VendorAddress;
-                result.Email = vendor.Email;
-                result.VendorContact = vendor.VendorContact;
-                result.OtherDetails = vendor.OtherDetails;
-                result.ModifiedBy = vendor.ModifiedBy;
-                result.ModifiedDate = vendor.ModifiedDate;
-
-                await _dbcontext.SaveChangesAsync();
-
-                return result;
-            }
-
-            return null;
-        }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shared.ModelDTO
+namespace Shared.ModelDTO.Vendor
 {
     public class UpdateVendor
     {

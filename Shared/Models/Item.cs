@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace InventoryApp.Models
+namespace Shared.Models
 {
     public class Item : BaseModelCustom
     {
@@ -26,4 +26,3 @@ namespace InventoryApp.Models
 
     }
 }
- 

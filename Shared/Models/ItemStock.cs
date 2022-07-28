@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace InventoryApp.Models
+namespace Shared.Models
 {
-    public class ItemStock:BaseModelCustom
+    public class ItemStock : BaseModelCustom
     {
         [Key]
         public int StockId { get; set; }

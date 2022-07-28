@@ -11,6 +11,7 @@ namespace Shared.IServices
 
         Task<IEnumerable<T>> GetAll();
         Task<T> Get(Func<T, bool> predicate);
+        Task<T> GetById(int Id);
         Task<T> Add(T entity);
         Task<T> Update(T entity);
         void Delete(int Id);

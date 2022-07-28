@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using InventoryApp.Models;
+using Shared.Models;
 
-namespace InventoryApp.Database
+namespace Shared.Database
 {
-    public class INV_DBContext : DbContext
+    public class NV_DBContext : DbContext
     {
 
-        public INV_DBContext(DbContextOptions<INV_DBContext> dbContext) : base(dbContext)
+        public NV_DBContext(DbContextOptions<NV_DBContext> dbContext) : base(dbContext)
         {
 
         }

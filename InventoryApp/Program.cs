@@ -3,20 +3,23 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
-using InventoryApp.Database;
+using Shared.Database;
 using Shared.ModelDTO;
-using InvConsoleApp;
+using Shared.Models;
+using Shared.Services;
+using Shared.IServices;
+
 
 var builder = WebApplication.CreateBuilder(args);
 //var builder = new ConfigurationBuilder();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 // Add services to the container.
-builder.Services.AddDbContext<INV_DBContext>
+builder.Services.AddDbContext<NV_DBContext>
     (options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("INVAppConnection"))
     );
-// builder.Services.AddSingleton<VendorService>;
+// builder.Services.AddSingleton<IService<Vendor>, VendorService>();
 
 var app = builder.Build();
 

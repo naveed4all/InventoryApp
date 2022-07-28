@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shared.ModelDTO
+namespace Shared.ModelDTO.Vendor
 {
     public class AddVendor
-    {       
+    {
         public string VendorName { get; set; }
 
         public string VendorAddress { get; set; }
